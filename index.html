@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hey future wifey 💍</title>
+
+<style>
+:root{
+  --accent:#ff2f7b;
+  --bg1:#fff1f6;
+  --bg2:#ffe4ec;
+  --card:#ffffffee;
+  --shadow:0 20px 60px rgba(0,0,0,.15);
+}
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto;
+  background:
+    radial-gradient(1000px 700px at 20% 10%,var(--bg2),transparent 60%),
+    radial-gradient(1000px 700px at 80% 90%,var(--bg2),transparent 60%),
+    linear-gradient(135deg,var(--bg1),#fff);
+  display:flex;
+  justify-content:center;
+  overflow-y:auto;
+  padding:18px 10px;
+}
+
+.card{
+  background:var(--card);
+  width:min(720px,92vw);
+  padding:26px 22px;
+  border-radius:26px;
+  box-shadow:var(--shadow);
+  text-align:center;
+}
+
+.badge{
+  display:inline-block;
+  padding:10px 16px;
+  border-radius:999px;
+  background:rgba(255,47,123,.1);
+  border:1px solid rgba(255,47,123,.25);
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+h1{
+  color:var(--accent);
+  font-size:clamp(26px,4vw,40px);
+  margin:10px 0;
+}
+
+.subtitle{
+  font-size:15px;
+  line-height:1.6;
+  max-width:60ch;
+  margin:0 auto 14px;
+}
+
+.photoWrap{
+  margin:16px auto;
+  max-width:560px;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 14px 35px rgba(0,0,0,.15);
+  background:#fff;
+}
+.photoWrap img{
+  width:100%;
+  height:auto;        /* ✅ no cropping */
+  display:block;
+  object-fit:contain; /* ✅ full image */
+}
+
+.note{
+  text-align:left;
+  margin:18px auto;
+  max-width:66ch;
+  background:rgba(255,255,255,.85);
+  border:1px dashed rgba(255,47,123,.35);
+  border-radius:18px;
+  padding:16px;
+  line-height:1.7;
+  font-size:15px;
+}
+
+.note b{color:var(--accent);}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  position:relative;
+  min-height:76px;
+  margin-top:10px;
+}
+
+button{
+  border:none;
+  padding:14px 22px;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+.yes{
+  background:linear-gradient(135deg,var(--accent),#ff5a93);
+  color:white;
+}
+
+.no{
+  background:#ddd;
+  position:absolute;
+}
+
+details{
+  margin-top:18px;
+  text-align:left;
+  background:rgba(255,255,255,.75);
+  border-radius:18px;
+  padding:14px;
+}
+
+summary{
+  color:var(--accent);
+  font-weight:900;
+  cursor:pointer;
+}
+
+audio{
+  width:100%;
+  margin-top:12px;
+}
+
+.meta{
+  margin-top:14px;
+  font-size:13px;
+  opacity:.75;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="badge">💗 For Tarana Kishore</div>
+
+<h1>Hey future wifey 💍</h1>
+
+<p class="subtitle">
+I want to ask the prettiest girl on the planet out on a Valentine’s date —
+which coincidentally is also my girlfriend and my best friend.
+</p>
+
+<div class="photoWrap">
+  <img src="us.jpeg" alt="Us together">
+</div>
+
+<div class="note">
+Tarana, listen —
+<br><br>
+I am so lucky to have you as how perfectly you fit into my life, like you were always meant to be here.
+You’re my favourite person to talk to, my favourite person to annoy, and the one I want beside me
+everyday.
+<br><br>
+<b>From the day you walked into my life, everything got a little warmer and a lot more worth it.</b>
+And if you say yes, I promise more laughter, more softness, and a date where it’s just you and me just our own little universe. 🫶
+<br><br>
+So… will you be my Valentine? 🌹
+<br><br>
+— <b>Rajat Luthra</b>
+</div>
+
+<div class="buttons" id="btnArea">
+  <button class="yes" onclick="yesClicked()">Yes 💖</button>
+  <button class="no" id="noBtn">No 🙈</button>
+</div>
+
+<details>
+<summary>What I’m planning for us 💋</summary>
+<p>
+A proper date where we dress up and feel irresistible, dancing and drinking like we own the night,
+flirting like we’re falling in love all over again —
+with playful mischief, surprises, and gifts meant only for you and me. 😉
+</p>
+</details>
+
+<div style="margin-top:16px;">
+<b style="color:#ff2f7b;">Our song 🎶</b>
+<audio id="bgm" controls loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+<button class="yes" style="width:100%;margin-top:8px;" onclick="playSong()">Play our song 🎵</button>
+</div>
+
+<div class="meta">Made with ❤️ by Rajat Luthra</div>
+
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const btnArea = document.getElementById("btnArea");
+let count = 0;
+
+noBtn.addEventListener("mouseover", ()=>{
+  count++;
+  const maxX = btnArea.offsetWidth - noBtn.offsetWidth;
+  const maxY = btnArea.offsetHeight - noBtn.offsetHeight;
+  noBtn.style.left = Math.random()*maxX + "px";
+  noBtn.style.top  = Math.random()*maxY + "px";
+  const msgs = ["No 🙈","Are you sure? 😭","Don’t do this 🥺","Nice try 😘"];
+  noBtn.textContent = msgs[Math.min(count,msgs.length-1)];
+});
+
+function yesClicked(){
+  window.open(
+    "https://wa.me/919878189121?text=YES!%20I%E2%80%99ll%20be%20your%20Valentine%20%E2%9D%A4%EF%B8%8F",
+    "_blank"
+  );
+}
+
+function playSong(){
+  const bgm = document.getElementById("bgm");
+  bgm.play().catch(()=>{});
+}
+</script>
+
+</body>
+</html>
